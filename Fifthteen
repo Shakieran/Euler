@@ -9,36 +9,46 @@ public class Fifthteen
     for(int x = 0; x < 20; x++)
     {
       sum = sum.add(combo(19+x, x));
+      System.out.println(x);
     }
-    
-    sum *= 2;
+
+    sum = sum.multiply(new BigInteger("" + 2));
     System.out.println(sum.toString());
   }
-  
+
   private BigInteger combo(int n, int r)
   {
     BigInteger N = fact(n);
     BigInteger R = fact(r);
     BigInteger X = fact(n-r);
-    
+
     R = R.multiply(X);
-    
+
     N = N.divide(R);
     return N;
   }
-  
+
   private BigInteger fact(int n)
   {
     BigInteger Sum = new BigInteger(n + "");
     BigInteger N = new BigInteger((n-1) + "");
     BigInteger ONE = new BigInteger(1 + "");
-    
-    while(!ONE.equals(N))
+
+    if(n==0)
+    	return ONE;
+
+    while(n>1)
     {
       Sum = Sum.multiply(N);
       N = N.subtract(ONE);
+      n--;
     }
-    
+
     return Sum;
+  }
+
+  public static void main(String[] args)
+  {
+  	Fifthteen ShakAttack = new Fifthteen();
   }
 }
