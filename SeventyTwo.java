@@ -33,32 +33,42 @@ public class SeventyTwo
   {
     int c = 0;
     x++;
-    
-    if(d*primes.get(x)>1000000)
+    if(x < primes.size())
     {
-      for(int x = 0; x < phi.size(); x++)
-        d *= (1-(1.0/phi.get(x)));
+      if(d*primes.get(x)>1000000)
+      {
+        for(int x = 0; x < phi.size(); x++)
+          d *= (1-(1.0/phi.get(x)));
+          
+        Sum.add(new BigInteger("" + d));
+      }
+      else
+      {
+        getNums(x, d, phi);//unchanged except x is one higher
+        while(d < 1000000)
+        {
+          c++;
+          d *= primes.get(x);
+        }
         
-      Sum.add(new BigInteger("" + d));
+        c--;
+        d /= primes.get(x);
+        
+        while(c > 0)
+        {
+          getNums(x, d, phi);
+          c--;
+          
+        }
+      }
     }
     else
     {
-      getNums(x, d, phi);//unchanged except x is one higher
-      while(d < 1000000)
-      {
-        c++;
-        d *= primes.get(x);
-      }
-      
-      c--;
-      d /= primes.get(x);
-      
-      while(c > 0)
-      {
-        getNums(x, d, phi);
-        c--;
+      double jenky = 1;
+      for(int g = 0; g < phi.size(); g++)
+        jenky *= (1 - 1.0/phi.get(g));
         
-      }
+      Sum.add(new BigInteger("" + (int)(d * jenky)));
     }
   }
 }
