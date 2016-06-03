@@ -1,0 +1,69 @@
+import java.math.*;
+import java.util.*;
+
+public class Eighty
+{
+	private final BigInteger TWO = new BigInteger("2");
+	private final BigInteger FIVE = new BigInteger("5");
+	private final BigInteger TEN = new BigInteger("10");
+	private final BigInteger HUNDO = new BigInteger("100");
+	private BigInteger twoPac;//holds answ*2
+	private BigInteger diff;
+	private BigInteger answ;
+	private int sum = 475;
+	private ArrayList<Integer> sqares = new ArrayList<Integer>();
+	private ArrayList<Integer> sNum = new ArrayList<Integer>();
+
+	public Eighty()
+	{
+		for(int x = 2; x < 11; x++)
+		{
+			sNum.add(x);
+			sqares.add(x*x);
+		}
+
+		for(int x = 3; x < 100; x++)
+		{
+			if(x==sqares.get(0))
+			{
+				sNum.remove(0);
+				sqares.remove(0);
+			}
+			else
+			{
+				answ = new BigInteger("" + (sNum.get(0)-1));
+				diff = new BigInteger("" + x);
+				diff = diff.subtract(answ.multiply(answ));
+				while(answ.toString().length()<102)
+				{
+					diff = diff.multiply(HUNDO);
+					twoPac = answ.multiply(TWO);
+					twoPac = answ.multiply(TEN);
+
+					twoPac.add(FIVE);
+					int c = diff.divide(twoPac).intValue();
+					answ = answ.multiply(TEN);
+					answ = answ.add(new BigInteger("" + c));
+					twoPac.subtract(FIVE);
+					twoPac.add(new BigInteger("" + c));
+					twoPac.multiply(new BigInteger("" + c));
+					diff = diff.subtract(twoPac);
+				}
+
+				String temp = answ.toString().substring(1, 102);
+				System.out.println(x + ":" + answ.toString().charAt(0) + "." + answ.toString().substring(1, answ.toString().length()));
+				for(int g = 0; g < temp.length(); g++)
+				{
+					sum+= Integer.parseInt("" + temp.charAt(g));
+				}
+			}
+		}
+
+		System.out.println(sum);
+	}
+
+	public static void main(String[] args)
+	{
+		Eighty test = new Eighty();
+	}
+}
