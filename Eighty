@@ -40,13 +40,13 @@ public class Eighty
 					twoPac = answ.multiply(TWO);
 					twoPac = answ.multiply(TEN);
 
-					twoPac.add(FIVE);
-					int c = diff.divide(twoPac).intValue();
+					twoPac = twoPac.add(FIVE);
+					int c = diff.divide(twoPac).intValue()-1;
 					answ = answ.multiply(TEN);
 					answ = answ.add(new BigInteger("" + c));
-					twoPac.subtract(FIVE);
-					twoPac.add(new BigInteger("" + c));
-					twoPac.multiply(new BigInteger("" + c));
+					twoPac = twoPac.subtract(FIVE);
+					twoPac = twoPac.add(new BigInteger("" + c));
+					twoPac = twoPac.multiply(new BigInteger("" + c));
 					diff = diff.subtract(twoPac);
 				}
 
