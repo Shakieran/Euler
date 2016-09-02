@@ -1,13 +1,29 @@
 import java.math.*;
 import java.util.*;
-
+//23
 public class ThirtySeven
 {
   ArrayList<Integer> primes = Basic.primeSieve(3000000);//3 million
   
   public ThirtySeven()
   {
+    int sum = 0;
+    int total = 0;
+    int x = 4;//2, 3, 5, 7, 11
     
+    while(total < 11)
+    {
+      if(isRightTrunc(x) && isLeftTrunc(x))
+      {
+        sum += x;
+        total ++;
+        System.out.println(x);
+      }
+      
+      x++
+    }
+    
+    System.out.println("Sum: " + sum);
   }
   
   private boolean isRightTrunc(int num)//We assume that the number is prime
