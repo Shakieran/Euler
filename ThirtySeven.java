@@ -60,4 +60,11 @@ public class ThirtySeven
     
     return true;
   }
+  
+  public static void main(String[] args)
+  {
+    ThirtySeven Hall = new ThirtySeven();
+    int Oats = 23;
+    System.out.println(Oats);
+  }
 }
