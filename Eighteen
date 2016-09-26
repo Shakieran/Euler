@@ -1,0 +1,38 @@
+import java.math.*;
+import java.util.*;
+
+public class Eighteen
+{//I must find the maximum path by combining the longest paths I can -- if the first one fails, user send in a false and try again
+  public class Eighteen()
+  {
+    ArrayList<ChainA> allDemChains = new ArrayList<ChainA>();
+  }
+  
+  private getMaxCC(pos start, int n, int r)
+  {//pos is the pos where the first chain ends, and int n and r are the numbers in nCr combination formula
+    ArrayList<String> paths = new ArrayList<String>();
+    ArrayList<Integer> pathNums = new ArrayList<Integer>();
+    String temp = "";
+    for(int x = 0; x < n; x++)
+      temp = temp + "d";
+      
+     for(int x = 0; x < r; x++)
+      temp = temp + "a";
+      
+     int max = 0;
+     String mPath = "";
+     int t;
+     
+     while(paths.size()>0)
+     {
+      t = gP(paths.get(0));
+      if(t > max)
+      {
+        max = 1;
+        mPath = paths.get(0);
+      }
+      
+     }
+  }
+  
+}
