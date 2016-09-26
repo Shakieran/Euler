@@ -25,14 +25,13 @@ public class Eighteen
      
      while(paths.size()>0)
      {
-      t = gP(paths.get(0));
-      if(t > max)
-      {
-        max = 1;
-        mPath = paths.get(0);
-      }
-      
+        t = gP(paths.get(0));
+        if(t > max)
+        {
+         max = 1;
+         mPath = paths.get(0);
+        }
+        paths.remove(0);
      }
   }
-  
 }
